@@ -1,6 +1,9 @@
 # Capture & Craft Studio - Screenshot Painter
+<a href="https://saramjh.github.io/ScreenshotMarker/">![preview](https://github.com/user-attachments/assets/f2890653-9a82-4fa6-980e-c6dbe6d0839d)</a>
 
 Capture & Craft Studio is a versatile web-based tool that allows users to create, edit, and enhance screenshots effortlessly. This project is perfect for office workers, educators, and collaborators who seek to elevate their digital content with customized visual stories.
+
+<a href="https://saramjh.github.io/ScreenshotMarker/">Go to the Tool</a>
 
 ## Features
 
