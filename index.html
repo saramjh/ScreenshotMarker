@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V9RTN10RDW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-V9RTN10RDW');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Primary Meta Tags -->
+  <title>Capture & Craft Studio - Screenshot Painter | Create Stunning Screenshots Easily</title>
+  <meta name="description"
+    content="Capture & Craft Studio offers innovative tools to transform screenshots into beautiful visual stories. Perfect for office workers, educators, and collaborators seeking to enhance their digital content with customized screenshots.">
+  <meta name="keywords"
+    content="Capture & Craft Studio, screenshot painter, screenshot editing, visual storytelling, design tools, digital content creation">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Saramjh">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:title" content="Capture & Craft Studio - Screenshot Painter | Create Stunning Screenshots Easily">
+  <meta property="og:description"
+    content="Enhance your digital content with Capture & Craft Studio's screenshot painting tools. Perfect for memo on the screenshot you just captured.">
+  <meta property="og:image" content="https://github.com/saramjh/ScreenshotMarker/preview.jpg">
+  <meta property="og:url" content="https://github.com/saramjh/ScreenshotMarker">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Capture & Craft Studio - Screenshot Painter | Create Stunning Screenshots Easily">
+  <meta name="twitter:description"
+    content="Discover tools to highlight your screenshots into visual masterpieces with Capture & Craft Studio. Ideal for memo on the screenshot you just captured.">
+  <meta name="twitter:image" content="https://github.com/saramjh/ScreenshotMarker/preview.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" href="https://github.com/saramjh/ScreenshotMarker/favicon.ico" type="image/x-icon">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://github.com/saramjh/ScreenshotMarker">
+
+  <!-- Additional SEO Meta Tags -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@4.0.1/reset.min.css" />
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <header>
+    <nav class="topMenu">
+      <div class="logo"><a href="https://saramjh.github.io/ScreenshotMarker/">Capture & Craft Studio</a></div>
+      <div class="canvas-functions">
+        <button id="save-image" title="Save Image (Cmd/Ctrl + S)">
+          <i class="fas fa-save"></i>
+        </button>
+        <select id="image-format">
+          <option value="png">PNG</option>
+          <option value="jpg">JPG</option>
+          <option value="gif">GIF</option>
+          <option value="webp">WEBP</option>
+        </select>
+        <button id="paste-from-clipboard" title="Paste from Clipboard (Cmd/Ctrl + V)">
+          <i class="fas fa-paste"></i>
+        </button>
+        <button id="copy-to-clipboard" title="Copy to Clipboard (Cmd/Ctrl + C)">
+          <i class="fa-solid fa-share-nodes"></i>
+        </button>
+      </div>
+      <div class="canvas-size-controls">
+        <label for="canvas-width"> <i class="fa-solid fa-left-right"></i></label>
+        <input type="number" id="canvas-width" placeholder="width" value="800" title="width">
+        <label for="canvas-height"><i class="fa-solid fa-up-down"></i></label>
+        <input type="number" id="canvas-height" placeholder="height" value="600" title="height">
+        <button id="resize-canvas" title="Apply"><i class="fas fa-check"></i></button>
+      </div>
+  </header>
+  <div class="container">
+    <div class="jumbotron">
+      <h1 class="jumbotronTitle">How to Capture into Clipboard</h1>
+      <div class="shortcutClipboard">
+        <div class="microsoft">
+          <p>
+          <div class="descTtitle"><i class="fa-brands fa-windows"></i></div>
+          Captures your screen<br><span class="key"><i class="fa-brands fa-windows"></i></span> + <span
+            class="key">⇧</span> + <span class="key">s</span>
+          <br>Paste it into this editor by <br><span class="key">Ctrl</span> + <span class="key">V</span>
+          </p>
+        </div>
+
+        <div class="apple">
+          <p>
+          <div class="descTtitle"><i class="fa-brands fa-apple"></i></div>
+          Captures your screen<br><span class="key">⌘</span> + <span class="key">⌃</span> + <span class="key">⇧</span>
+          +
+          <span class="key"><i class="fa-solid fa-4"></i></span>
+          <br>Paste it into this editor by <span class="key">⌘</span> + <span class="key">V</span>
+          </p>
+        </div>
+      </div>
+      <span id="fold"><i class="fa-solid fa-angle-down"></i></span>
+    </div>
+
+
+    <section id="workplace"> <canvas id="canvas"></canvas>
+      <div class="toolbar">
+        <div class="drawTool"><button id="brush-tool" title="Brush (B)">
+            <i class="fas fa-paint-brush"></i>
+          </button>
+          <button id="line-tool" title="Line (L)">
+            <i class="fas fa-minus"></i>
+          </button>
+          <div class="previewArea">
+            <div id="brush-preview">
+              <input type="color" id="color-picker" title="Brush Preview">
+            </div>
+          </div>
+          <input type="range" id="brush-size" min="1" max="30" value="5" title="+ or -">
+        </div>
+
+        <div class="adjustTool">
+          <button id="select-tool" title="Select (S)">
+            <i class="fas fa-mouse-pointer"></i>
+          </button>
+          <button id="delete-object" title="Delete (D)">
+            <i class="fas fa-trash-alt"></i>
+          </button>
+          <button id="clear-canvas" title="Clear Canvas (R)">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <div class="color-picker">
+          <button class="color-btn" id="color-btn-1" style="background-color: rgb(200, 0, 0);" title="Red (1)"></button>
+          <button class="color-btn" id="color-btn-2" style="background-color: rgb(255, 255, 0);"
+            title="Yellow (2)"></button>
+          <button class="color-btn" id="color-btn-3" style="background-color: rgb(0, 128, 0);"
+            title="Green (3)"></button>
+          <button class="color-btn" id="color-btn-4" style="background-color: rgb(0, 255, 255);"
+            title="Cyan (4)"></button>
+          <button class="color-btn" id="color-btn-5" style="background-color: rgb(0, 0, 255);"
+            title="Blue (5)"></button>
+          <button class="color-btn" id="color-btn-6" style="background-color: rgb(128, 0, 128);"
+            title="Purple (6)"></button>
+          <button class="color-btn" id="color-btn-7" style="background-color: rgb(255, 165, 0);"
+            title="Orange (7)"></button>
+          <button class="color-btn" id="color-btn-8" style="background-color: rgb(165, 42, 42);"
+            title="Brown (8)"></button>
+          <button class="color-btn" id="color-btn-9" style="background-color: rgb(0, 0, 0);" title="Black (9)"></button>
+          <button class="color-btn" id="color-btn-0" style="background-color: rgb(255, 255, 255);"
+            title="White (0)"></button>
+        </div>
+
+      </div>
+    </section>
+  </div>
+  <footer>
+    <p><a href="https://saramjh.github.io/ScreenshotMarker">&copy;2024 saramjh All rights reserved.</a></p>
+  </footer>
+  <!-- modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span id="close-modal">&times;</span>
+      <p id="modal-message"></p>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js"></script>
+  <script src="js/script.js"></script>
+  <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+    data-id="saramjh" data-description="Support me on Buy me a coffee!" data-message="" data-color="#efd634"
+    data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+</body>
+
+</html>
