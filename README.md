@@ -32,6 +32,7 @@ Capture & Craft Studio is a versatile web-based tool that allows users to create
 
 - **Brush Tool**: Click on the brush icon or press `B` to start drawing.
 - **Line Tool**: Click on the line icon or press `L` to draw straight lines.
+- **Text Tool**: Click on the text icon or press `T` to create text object.
 - **Select Tool**: Click on the pointer icon or press `S` to select and move objects.
 - **Change Brush Size**: Use the slider or press `+` or `-` to adjust the brush size.
 - **Change Color**: Click on the color preview to choose a new color, or use the predefined color buttons (0-9).
@@ -46,6 +47,7 @@ Capture & Craft Studio is a versatile web-based tool that allows users to create
 - `B` - Select Brush Tool
 - `L` - Select Line Tool
 - `S` - Select Pointer Tool
+- `T` - Select Text Tool
 - `+/-` - Increase/Decrease Brush Size
 - `Ctrl/Cmd + C` - Copy to Clipboard
 - `Ctrl/Cmd + V` - Paste from Clipboard
