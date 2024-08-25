@@ -239,6 +239,45 @@ document.getElementById("resize-canvas").addEventListener("click", function () {
 	showModal(`Canvas resized to ${width}x${height}.`)
 })
 
+// 텍스트 툴 선택
+document.getElementById("text-tool").addEventListener("click", function () {
+	currentTool = "text"
+	canvas.isDrawingMode = false
+	canvas.selection = true
+	enableObjectMovement()
+	canvas.on("mouse:down", addText)
+})
+
+// 텍스트 추가 함수
+function addText(event) {
+	if (currentTool !== "text") return
+
+	const pointer = canvas.getPointer(event.e)
+	const text = new fabric.Textbox("Click to edit", {
+		left: pointer.x,
+		top: pointer.y,
+		width: 150,
+		fontSize: 20,
+		fill: canvas.freeDrawingBrush.color, // 브러시 색상으로 텍스트 색상 설정
+	})
+	canvas.add(text)
+	canvas.setActiveObject(text)
+	canvas.renderAll()
+	canvas.off("mouse:down", addText)
+
+	// 텍스트 객체 편집 상태로 자동 전환
+	text.enterEditing() // 자동으로 편집 모드로 들어감
+	text.hiddenTextarea.focus() // 텍스트 영역에 포커스
+
+	// 텍스트 객체 편집 상태에 따라 단축키 비활성화 및 선택 툴로 전환
+	canvas.on("object:modified", function () {
+		currentTool = "select"
+		canvas.isDrawingMode = false
+		canvas.selection = true
+		enableObjectMovement()
+	})
+}
+
 // 단축키로 도구 선택 및 색상 변경
 document.addEventListener("keydown", function (event) {
 	if ((event.metaKey || event.ctrlKey) && event.code === "KeyR") {
@@ -249,6 +288,10 @@ document.addEventListener("keydown", function (event) {
 	// 단독 키 입력 (C, V)에서는 아무 기능도 동작하지 않음
 	if (event.code === "KeyC" || event.code === "KeyV") {
 		return
+	}
+
+	if (currentTool === "text") {
+		return // 텍스트 편집 중에는 단축키 비활성화
 	}
 
 	switch (event.code) {
@@ -266,6 +309,9 @@ document.addEventListener("keydown", function (event) {
 			break
 		case "KeyD":
 			document.getElementById("delete-object").click()
+			break
+		case "KeyT":
+			document.getElementById("text-tool").click()
 			break
 		case "Digit1":
 		case "Digit2":
@@ -324,6 +370,9 @@ function applyColor(digitCode) {
 		canvas.freeDrawingBrush.color = color
 		document.getElementById("brush-preview").style.backgroundColor = color
 	} else if (currentTool === "line") {
+		canvas.freeDrawingBrush.color = color
+		document.getElementById("brush-preview").style.backgroundColor = color
+	} else if (currentTool === "select") {
 		canvas.freeDrawingBrush.color = color
 		document.getElementById("brush-preview").style.backgroundColor = color
 	}

@@ -175,8 +175,8 @@ button:hover::after {
 
 #brush-preview input {
 	position: absolute;
-	width: 30px; /* 고정된 크기 */
-	height: 30px; /* 고정된 크기 */
+	width: 1px; /* 고정된 크기 */
+	height: 1px; /* 고정된 크기 */
 	opacity: 0; /* 숨기기 */
 	cursor: pointer;
 }
