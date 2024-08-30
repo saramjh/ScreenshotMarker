@@ -81,7 +81,7 @@ body {
 .container {
 	display: flex;
 	flex-direction: column;
-	justify-content: baseline;
+	justify-content: center;
 	align-items: center;
 	gap: 1rem;
 }
@@ -89,6 +89,13 @@ body {
 canvas {
 	border-radius: 0.3rem 0.3rem 0 0;
 	box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+#workplace {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 .toolbar {

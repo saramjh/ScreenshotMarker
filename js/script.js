@@ -233,9 +233,11 @@ async function pasteFromClipboard() {
 document.getElementById("resize-canvas").addEventListener("click", function () {
 	const width = document.getElementById("canvas-width").value
 	const height = document.getElementById("canvas-height").value
+
 	canvas.setWidth(parseInt(width, 10))
 	canvas.setHeight(parseInt(height, 10))
 	canvas.renderAll()
+
 	showModal(`Canvas resized to ${width}x${height}.`)
 })
 
