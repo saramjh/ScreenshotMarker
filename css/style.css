@@ -98,6 +98,10 @@ canvas {
 	align-items: center;
 }
 
+#workplace h2 {
+	margin-bottom: 10px;
+}
+
 .toolbar {
 	display: flex;
 	flex-wrap: wrap;
