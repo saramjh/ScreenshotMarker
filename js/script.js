@@ -12,6 +12,19 @@ canvas.freeDrawingBrush.color = "black"
 document.getElementById("brush-preview").style.backgroundColor = canvas.freeDrawingBrush.color
 let currentTool = "brush"
 
+// Track completed actions, never filenames, images or brush strokes.
+function markerAnalytics(name, params = {}) {
+  if (typeof window.gtag === "function") window.gtag("event", name, params)
+}
+let editorActivated = false
+function recordEditorActivation() {
+  if (editorActivated) return
+  editorActivated = true
+  markerAnalytics("editor_activated")
+}
+canvas.on("path:created", recordEditorActivation)
+canvas.on("object:added", recordEditorActivation)
+
 // 모달 창
 const modal = document.getElementById("modal")
 const modalMessage = document.getElementById("modal-message")
@@ -159,6 +172,7 @@ async function copyToClipboard() {
 		const blob = await (await fetch(dataUrl)).blob()
 		const item = new ClipboardItem({ "image/png": blob })
 		await navigator.clipboard.write([item])
+		markerAnalytics("image_copied")
 		showModal("Image copied to clipboard.")
 	} catch (err) {
 		console.error("Failed to copy image to clipboard:", err)
@@ -176,6 +190,7 @@ function saveImage() {
 	link.href = dataUrl
 	link.download = `canvas-image.${format}`
 	link.click()
+	markerAnalytics("image_export", { export_format: format })
 	showModal(`Image saved as ${format}.`)
 }
 
